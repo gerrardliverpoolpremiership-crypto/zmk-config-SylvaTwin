@@ -1,8 +1,7 @@
 /*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
+* Copyright (c) 2020 The ZMK Contributors
+* * SPDX-License-Identifier: MIT
+*/
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -10,151 +9,142 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    combos {
-        compatible = "zmk,combos";
+combos {
+compatible = "zmk,combos";
 
         prtsc {
-            bindings = <&kp PRINTSCREEN>;
-            key-positions = <10 11>;
-        };
+bindings = <&kp PRINTSCREEN>;
+key-positions = <10 11>;
+};
 
         RightClick {
-            bindings = <&mkp RCLK>;
-            key-positions = <30 44>;
-        };
+bindings = <&mkp RCLK>;
+key-positions = <30 44>;
+};
 
         MiddleClick {
-            bindings = <&mkp MCLK>;
-            key-positions = <29 43>;
-        };
+bindings = <&mkp MCLK>;
+key-positions = <29 43>;
+};
 
         RightClick2 {
-            bindings = <&mkp RCLK>;
-            key-positions = <31 45>;
-        };
+bindings = <&mkp RCLK>;
+key-positions = <31 45>;
+};
 
         MiddleClick2 {
-            bindings = <&mkp MCLK>;
-            key-positions = <32 46>;
-        };
+bindings = <&mkp MCLK>;
+key-positions = <32 46>;
+};
 
         zen-han {
-            bindings = <&kp GRAVE>;
-            key-positions = <0 1>;
-        };
+bindings = <&kp GRAVE>;
+key-positions = <0 1>;
+};
 
         paste {
-            bindings = <&kp LC(V)>;
-            key-positions = <42 28>;
-        };
+bindings = <&kp LC(V)>;
+key-positions = <42 28>;
+};
 
         copy {
-            bindings = <&kp LC(C)>;
-            key-positions = <41 27>;
-        };
+bindings = <&kp LC(C)>;
+key-positions = <41 27>;
+};
 
         cut {
-            bindings = <&kp LC(X)>;
-            key-positions = <40 26>;
-        };
+bindings = <&kp LC(X)>;
+key-positions = <40 26>;
+};
 
         prev_click {
-            bindings = <&mkp MB4>;
-            key-positions = <29 30>;
-        };
-    };
+bindings = <&mkp MB4>;
+key-positions = <29 30>;
+};
+};
 
     macros {
-        parens_in: parens_in {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <30>;
-            tap-ms = <30>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT_ARROW>;
-        };
-    };
-
-    behaviors {
-        scroll_up_down: scroll_up_down {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-            tap-ms = <20>;
-        };
-    };
+parens_in: parens_in {
+compatible = "zmk,behavior-macro";
+#binding-cells = <0>;
+wait-ms = <30>;
+tap-ms = <30>;
+bindings = <&kp LPAR &kp RPAR &kp LEFT_ARROW>;
+};
+};
 
     keymap {
-        compatible = "zmk,keymap";
+compatible = "zmk,keymap";
 
         default_layer {
-            bindings = <
+bindings = <
 &kp TAB     &kp Q     &kp W     &kp E  &kp R  &kp T                        &kp Y  &kp U  &kp I      &kp O    &kp P      &kp BSPC
 &kp CAPS    &kp A     &kp S     &kp D  &kp F  &kp G                        &kp H  &kp J  &kp K      &kp L    &kp MINUS  &kp ENTER
 &kp LSHIFT  &kp Z     &kp X     &kp C  &kp V  &kp B  &mkp LCLK  &mkp RCLK  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH  &kp F10
 &kp LCTRL   &kp LGUI  &kp LALT  &mo 5  &mo 4  &mo 3  &kp SPACE  &kp SPACE  &none  &none  &mo 6      &kp DEL  &kp F7     &kp F4
-            >;
+>;
 
-            sensor-bindings = <&scroll_up_down>;
-        };
+            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+};
 
         layer_1 {
-            bindings = <
+bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
+>;
+};
 
         layer_2 {
-            bindings = <
+bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
+>;
+};
 
         layer_3 {
-            bindings = <
-&trans  &none  &none           &kp UP_ARROW    &none            &none                     &mo 1                &mkp RCLK  &none             &none              &none   &trans
-&none   &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none                     &mkp MCLK            &none      &none             &none              &none   &trans
-&none   &none  &none           &none           &none            &none  &trans  &none      &kp LA(RIGHT_ARROW)  &none      &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &none   &trans
-&none   &none  &none           &none           &none            &none  &trans  &mkp LCLK  &kp LA(LEFT_ARROW)   &none      &none             &trans             &trans  &trans
-            >;
+bindings = <
+&trans  &none  &none           &kp UP_ARROW    &none            &none                     &mkp RCLK            &mo 1  &none             &none              &none   &trans
+&none   &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none                     &mkp MCLK            &none  &none             &none              &none   &trans
+&none   &none  &none           &none           &none            &none  &trans  &none      &kp LA(RIGHT_ARROW)  &none  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &none   &trans
+&none   &none  &none           &none           &none            &none  &trans  &mkp LCLK  &kp LA(LEFT_ARROW)   &none  &none             &trans             &trans  &trans
+>;
 
-            sensor-bindings = <&scroll_up_down>;
-        };
+            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+};
 
         layer_4 {
-            bindings = <
+bindings = <
 &kp ESCAPE  &kp F1     &kp F2     &kp F3     &kp F4     &kp F5                     &kp LS(NUMBER_4)  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &none          &kp DELETE
 &trans      &kp F6     &kp F7     &kp F8     &kp F9     &kp F10                    &kp PERIOD        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LS(GRAVE)  &trans
 &trans      &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LC(B)  &trans  &trans  &kp NUMBER_0      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp SLASH      &trans
 &trans      &none      &none      &none      &none      &none      &trans  &trans  &none             &none         &none         &trans        &trans         &trans
-            >;
+>;
 
-            sensor-bindings = <&scroll_up_down>;
-        };
+            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+};
 
         layer_5 {
-            bindings = <
+bindings = <
 &none         &none  &none  &none  &none  &none                          &none  &none  &none  &none  &none  &none
 &bt BT_SEL 0  &none  &none  &none  &none  &none                          &none  &none  &none  &none  &none  &none
 &bt BT_SEL 1  &none  &none  &none  &none  &none  &trans  &bt BT_CLR_ALL  &none  &none  &none  &none  &none  &none
 &bt BT_SEL 3  &none  &none  &none  &none  &none  &none   &none           &none  &none  &none  &none  &none  &none
-            >;
-        };
+>;
+};
 
         layer_6 {
-            bindings = <
+bindings = <
 &trans  &kp SQT           &kp LS(SQT)  &kp LS(NUMBER_1)   &kp LS(NUMBER_6)  &none                          &kp NON_US_BACKSLASH  &kp LS(MINUS)  &none       &none   &kp LS(N5)  &trans
 &none   &kp LS(NUMBER_2)  &kp STAR     &kp MINUS          &kp EQUAL         &kp LS(EQUAL)                  &kp LS(NUMBER_3)      &none          &parens_in  &none   &none       &trans
 &none   &none             &none        &kp LS(SEMICOLON)  &none             &none          &trans  &trans  &kp LS(N7)            &none          &none       &none   &none       &trans
 &none   &none             &none        &none              &none             &none          &trans  &trans  &none                 &none          &none       &trans  &trans      &trans
-            >;
+>;
 
-            sensor-bindings = <&scroll_up_down>;
-        };
-    };
+            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+};
+};
 };
